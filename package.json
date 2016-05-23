@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/aehmlo/twisty/issues"
   },
-  "homepage": "https://github.com/aehmlo/twisty#readme"
+  "homepage": "https://github.com/aehmlo/twisty#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
