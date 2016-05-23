@@ -1,0 +1,26 @@
+{
+  "name": "twisty",
+  "version": "0.0.1",
+  "description": "A JavaScript library for working with Rubik's Cubes, primarily.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aehmlo/twisty.git"
+  },
+  "keywords": [
+    "rubik's",
+    "cube",
+    "puzzle",
+    "puzzles",
+    "rubik"
+  ],
+  "author": "Alex Hamilton <alex@hmltn.me>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aehmlo/twisty/issues"
+  },
+  "homepage": "https://github.com/aehmlo/twisty#readme"
+}
