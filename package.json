@@ -4,7 +4,7 @@
   "description": "A JavaScript library for working with Rubik's Cubes, primarily.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha tests"
   },
   "repository": {
     "type": "git",
