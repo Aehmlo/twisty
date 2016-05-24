@@ -1,6 +1,6 @@
 {
   "name": "twisty",
-  "version": "0.0.1",
+  "version": "0.0.1a",
   "description": "A JavaScript library for working with Rubik's Cubes, primarily.",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,5 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
-  },
-  "dependencies": {
-    "koa": "^1.2.0"
   }
 }
