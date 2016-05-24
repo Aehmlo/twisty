@@ -3,7 +3,7 @@ var mocha = require("mocha"),
 	describe = mocha.describe,
 	it = mocha.it;
 
-var Cube = require("../cube");
+var Cube = require("..").Cube;
 var Move = Cube.Types.Move;
 var Scramble = Cube.Types.Scramble;
 

@@ -7,7 +7,7 @@ class Move {
 		this.cubeDegree = cubeDegree || 3;
 	};
 
-	toString() {
+	toString() { // Here be dragons (kind of)
 		var multiSlice = false;
 		var string = "";
 		var j;
