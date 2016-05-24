@@ -70,6 +70,7 @@ class Cube extends Puzzle {
 		if(!(2 <= degree && degree <= 5) && !force) {
 			throw new Error(`This library currently only supports cubes from 2x2x2 to 5x5x5. If you know what you're doing and what's going to happen, try using \`new Cube(${degree}, true)\` to force the library to continue anyway.`);
 		}
+		this.facelets = {};
 	}
 
 	toString() {
@@ -157,6 +158,84 @@ class Cube extends Puzzle {
 		return scramble;
 
 	}
+
+	applyMove(face, layer, count) { // TODO: Actually use Move class.
+
+		var faces = {1: 0, 2: 0, 3: 0, 4: 0};
+		var facelets = this.facelets;
+		var size = this.degree;
+		var sizeSquared = size * size;
+		if(face > 5) { face -= 6; }
+		for(var k = 0; k < count; k++) {
+			for(var i = 0; i < size; i++) {
+				switch(face) {
+					case 0:
+						faces[1] = 6 * sizeSquared - size * layer - size + i;
+						faces[2] = 2 * sizeSquared - size * layer - 1 - i;
+						faces[3] = 3 * sizeSquared - size * layer - 1 - i;
+						faces[4] = 5 * sizeSquared - size * layer - size + i;
+						break;
+					case 1:
+						faces[1] = 3 * sizeSquared + layer + size * i;
+						faces[2] = 3 * sizeSquared + layer - size * (i + 1);
+						faces[3] = sizeSquared + layer - size * (i + 1);
+						faces[4] = 5 * sizeSquared + layer + size * i;
+						break;
+					case 2:
+						faces[1] = 3 * sizeSquared + layer * size + i;
+						faces[2] = 4 * sizeSquared + size - 1 - layer + size * i;
+						faces[3] = layer * size + size - 1 - i;
+						faces[4] = 2 * sizeSquared - 1 - layer - size * i;
+						break;
+					case 3:
+						faces[1] = 4 * sizeSquared + layer * size + size - 1 - i;
+						faces[2] = 2 * sizeSquared + layer * size + i;
+						faces[3] = sizeSquared + layer * size + i;
+						faces[4] = 5 * sizeSquared + layer * size + size - 1 - i;
+						break;
+					case 4:
+						faces[1] = 6 * sizeSquared - 1 - layer - size * i;
+						faces[2] = size - 1 - layer + size * i;
+						faces[3] = 2 * sizeSquared + size - 1 - layer + size * i;
+						faces[4] = 4 * sizeSquared - 1 - layer - size * i;
+						break;
+					case 5:
+						faces[1] = 4 * sizeSquared - size - d * size + i;
+						faces[2] = 2 * sizeSquared - size + d - size * i;
+						faces[3] = sizeSquared - 1 - d * size - i;
+						faces[4] = 4 * sizeSquared + layer + size * i;
+						break;
+				}
+				var temp = facelets[faces[1]];
+				facelets[faces[1]] = facelets[faces[2]];
+				facelets[faces[2]] = facelets[faces[3]];
+				facelets[faces[3]] = facelets[faces[4]];
+				facelets[faces[4]] = temp;
+			}
+
+			if(layer == 0) { // Turn face
+				for(var i = 0; i < size; i++) {
+					for(var j = 0; j + j < size - 1; i++) {
+						faces[1] = face * sizeSquared + i + j * size;
+						faces[3] = face * sizeSquared + (size - 1 - i) + (size - 1 - j) * size;
+						if(face < 3) {
+							faces[2] = face * sizeSquared + (size - 1 - j) + i * size;
+							faces[4] = face * sizeSquared + j + (size - 1 - i) * size;
+						} else {
+							faces[4] = face * sizeSquared + (size - 1 - j) + i * size;
+							faces[2] = face * sizeSquared + j + (size - 1 - i) * size;
+						}
+						var temp = facelets[faces[1]];
+						facelets[faces[1]] = facelets[faces[2]];
+						facelets[faces[2]] = facelets[faces[3]];
+						facelets[faces[3]] = facelets[faces[4]];
+						facelets[faces[4]] = temp;
+					}
+				}
+			}
+		}
+	}
+
 }
 
 Cube.Types = {
