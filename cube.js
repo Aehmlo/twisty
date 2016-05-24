@@ -151,7 +151,7 @@ class Cube extends Puzzle {
 		addMove(scramble, movements, twistableLayers, lastAxis, size);
 
 		while(scramble.moves.length > desiredLength) {
-			scramble.moves.pop(); // Hax
+			scramble.moves.pop(); // Hax; TODO: Figure out why this is needed
 		}
 
 		return scramble;
