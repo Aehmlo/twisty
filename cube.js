@@ -2,6 +2,9 @@
 
 (function() {
 
+	var root = this;
+	var previous_Cube = root.Cube;
+
 	class Move {
 
 		constructor(rawValue, cubeDegree) {
@@ -73,6 +76,11 @@
 				throw new Error(`This library currently only supports cubes from 2x2x2 to 5x5x5. If you know what you're doing and what's going to happen, try using \`new Cube(${degree}, true)\` to force the library to continue anyway.`);
 			}
 			this.facelets = {};
+		}
+
+		noConflict() {
+			root.Cube = previous_Cube;
+			return Cube;
 		}
 
 		toString() {
@@ -246,6 +254,13 @@
 		Scramble: Scramble
 	}
 
-	module.exports = Cube;
-	
+	if(typeof exports !== "undefined") {
+		if(typeof module !== "undefined" && module.exports) {
+			exports = module.exports = Cube;
+		}
+		exports = Cube;
+	} else {
+		root.Cube = Cube;
+	}
+
 }).call(this);
