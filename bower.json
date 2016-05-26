@@ -1,0 +1,24 @@
+{
+  "name": "twisty",
+  "description": "A JavaScript library for working with Rubik's Cubes, primarily.",
+  "main": "index.js",
+  "authors": [
+    "Alex Hamilton <alex@hmltn.me>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "rubik's",
+    "cube",
+    "puzzle",
+    "puzzles",
+    "rubik"
+  ],
+  "homepage": "https://github.com/Aehmlo/twisty",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
