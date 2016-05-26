@@ -255,7 +255,7 @@
 	}
 
 	if(typeof exports !== "undefined") {
-		if(typeof module !== "undefined" && module.exports) {
+		if(module && typeof module !== "undefined" && module.exports) {
 			exports = module.exports = Cube;
 		}
 		exports = Cube;
