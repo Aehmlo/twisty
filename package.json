@@ -1,6 +1,6 @@
 {
   "name": "twisty",
-  "version": "0.0.1a",
+  "version": "0.0.2",
   "description": "A JavaScript library for working with Rubik's Cubes, primarily.",
   "main": "index.js",
   "scripts": {
